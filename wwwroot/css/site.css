@@ -1,11 +1,12 @@
-﻿html {
-    font-size: 16px;
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.navbar-toggler {
+    float: right;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+.navbar-collapse {
+    text-align: right;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -15,11 +16,13 @@
 html {
     position: relative;
     min-height: 100%;
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
     margin-bottom: 60px;
     background: #000000;
+    font-family: "Montserrat", sans-serif;
 }
 
 .custom-header {
@@ -45,4 +48,28 @@ body {
 
 .custom-bold-head {
     font-weight: bold;
+}
+
+.custom-bold-sub {
+    font-weight: 500;
+}
+
+.custom-placeholder::placeholder {
+    font-style: italic;
+}
+
+.custom-input {
+    border-radius: 30px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.image-container {
+    display: flex;
+    overflow-x: auto;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
 }
