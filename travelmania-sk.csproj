@@ -9,4 +9,14 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <Content Remove="wwwroot\js\responsiveNavs.js" />
+    <Content Remove="wwwroot\assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\js\responsiveNavs.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\" />
+  </ItemGroup>
 </Project>
