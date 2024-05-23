@@ -78,9 +78,31 @@ body {
     border-radius:30px;
 }
 
-.horizontal-scrolling {
+.img-item img:hover {
+    cursor:pointer;
+}
+
+.horizontal-container {
     display: flex;
     overflow: scroll;
     justify-content: space-around;
     align-items: center;
+    margin-block:40px;
+}
+
+.carousel-item {
+    height: 50vh;
+    width: 100%;
+    padding-block: 15px;
+}
+
+.carousel-card {
+    height: 85%;
+    width: 75%;
+    padding: 10px;
+    background-color: grey;
+    margin: auto;
+    border-radius: 30px;
+    background: rgb(25,25,24);
+    background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);
 }
