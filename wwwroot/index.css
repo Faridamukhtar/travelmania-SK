@@ -170,10 +170,10 @@ button.accept-policy {
 
 @media only screen and (max-width: 900px) {
     .custom-header {
-        height: 50vh;
+        height: 80vh;
     }
 
     .custom-header-overlay {
-        height: 55vh;
+        height: 85vh;
     }
 }
