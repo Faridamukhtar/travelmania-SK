@@ -10,13 +10,28 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
-    <Content Remove="wwwroot\js\responsiveNavs.js" />
     <Content Remove="wwwroot\assets\" />
+    <Content Remove="wwwroot\js\responsiveNavs.js" />
+    <Content Remove="wwwroot\index.js" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\js\responsiveNavs.js" />
+    <None Remove="travelmania.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\index.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="travelmania.db">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>

@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelMania</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/index.css" />
+    <script src="https://unpkg.com/htmx.org@1.6.0/dist/htmx.min.js"></script>
+</head>
+<body>
+    <header class="custom-header">
+        <div class="custom-header-overlay">
+            <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark bg-dark bg-opacity-50 mb-5 shadow-lg mb-3">
+                <div class="container">
+                    <a class="navbar-brand" href="/Index">TM</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse navbar-right collapse  d-lg-flex justify-content-end">
+                        <ul class="navbar-nav" id="navbar-selections">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#Home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#Most-Visited">Most Visited</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#Testimonials">Testimonials</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <section id="Home">
+                <div class="text-center">
+                    <h1 class="display-1 text-light custom-bold-head">TravelMania</h1>
+                    <h4 class="display-7 text-light font-weight-bold">Plan. Pack. Proceed.</h4>
+                </div>
+                <div class="d-flex justify-content-center align-items-center p-5 m-3">
+                    <form class="col-10 row-md-4 bg-opacity-50">
+                        <input class="form-control custom-placeholder custom-input p-3 bg-info bg-opacity-60 rounded-pill" type="search" placeholder="Enter your dream destination..." aria-label="Search">
+                    </form>
+                </div>
+            </section>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <section id="Most-Visited">
+                <div class="text-left text-light">
+                    <h1 class="display-4 custom-bold-sub">Most Visited</h1>
+                </div>
+                <div class="horizontal-container">
+                    <div class="img-item">
+                        <img src="/assets/dubai.jpg" alt="dubai" class="custom-img">
+                        <h4 class="text-light">
+                            Dubai
+                        </h4>
+                    </div>
+                    <div class="img-item">
+                        <img src="/assets/rome.jpg" alt="rome" class="custom-img">
+                        <h4 class="text-light">
+                            Rome
+                        </h4>
+                    </div>
+                    <div class="img-item">
+                        <img src="/assets/bali.jpg" alt="bali" class="custom-img">
+                        <h4 class="text-light">
+                            Bali
+                        </h4>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Testimonials">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adminModal">
+                    Open Testimonials Control Panel
+                </button>
+                <div class="text-left text-light">
+                    <h1 class="display-4 custom-bold-sub">Testimonials</h1>
+                </div>
+                <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <!-- Dynamic content -->
+                    </div>
+
+                    <div class="carousel-inner" id="carouselInner">
+                        <!-- Dynamic content -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Admin Modal -->
+    <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                    <h5 class="modal-title" id="adminModalLabel">Admin View - Testimonials</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Testimonials List -->
+                    <ul id="testimonialsList" class="list-group list-group-flush">
+                        <!-- Testimonials will be dynamically added here -->
+                    </ul>
+                </div>
+                <div class="modal-footer" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addTestimonial()">New</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Modal -->
+    <div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                    <h5 class="modal-title" id="testimonialModalLabel">Edit Testimonial</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="testimonialId">
+                    <div class="mb-3">
+                        <label for="testimonialName" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="testimonialName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="testimonialDestination" class="form-label">Destination:</label>
+                        <input type="text" class="form-control" id="testimonialDestination" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="testimonialRating" class="form-label">Rating:</label>
+                        <input type="number" class="form-control" id="testimonialRating" min="1" max="5" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="testimonialReview" class="form-label">Review:</label>
+                        <textarea class="form-control" id="testimonialReview" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="saveTestimonialBtn" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="footer text-muted">
+        <div class="row justify-content-center">
+            Copyright &copy; designed and developed by Farida Moukhtar
+        </div>
+    </footer>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            UpdateTestimonials();
+        });
+
+        var testimonials = [];
+
+
+        //UPDATE TESTIMONIALS (HOMEPAGE)
+        function UpdateTestimonials() {
+            var carouselIndicators = document.getElementById('carouselIndicators');
+            var carouselInner = document.getElementById('carouselInner');
+            while (carouselInner.firstChild) {
+                carouselInner.removeChild(carouselInner.firstChild);
+            }
+
+            while (carouselIndicators.firstChild) {
+                carouselIndicators.removeChild(carouselIndicators.firstChild);
+            }
+
+
+            fetch('/testimonials')
+                .then(response => response.json())
+                .then(testimonialsFetched => {
+                    testimonials = testimonialsFetched;
+                    testimonials.forEach(function (item, index) {
+                        var indicatorButton = document.createElement('button');
+                        indicatorButton.type = 'button';
+                        indicatorButton.setAttribute('data-bs-target', '#myCarousel');
+                        indicatorButton.setAttribute('data-bs-slide-to', index.toString());
+                        indicatorButton.setAttribute('aria-label', 'Slide ' + (index + 1));
+                        if (index === 0) {
+                            indicatorButton.className = 'active';
+                        }
+                        carouselIndicators.appendChild(indicatorButton);
+
+                        var carouselItem = document.createElement('div');
+                        carouselItem.className = 'carousel-item opacity-80' + (index === 0 ? ' active' : '');
+                        var innerHtmlTestimonial = `
+                            <div class="carousel-card text-left">
+                                <h4 class="text-light custom-bold-sub p-0 m-0">${item.name}</h4>
+                                <div class="row d-inline px-0 mx-0 my-3">
+                                    <h6 class="text-light custom-light-sub d-inline mx-0 px-0">${item.destinationName} • </h6>
+                                    <div class="d-inline mx-0 px-0">
+                            `;
+                        for (var i = 0; i < item.rating; i++) {
+                            innerHtmlTestimonial += `<img src="/assets/star.svg" alt="Star" class="star-icon mx-0 px-0" />`;
+                        }
+                        innerHtmlTestimonial += `
+                            </div>
+                                </div>
+                                    <h6 class="text-light custom-light-sub px-0 mx-0 my-3">${item.review}</h6>
+                                </div>
+                            `;
+                        carouselItem.innerHTML = innerHtmlTestimonial;
+                        carouselInner.appendChild(carouselItem);
+                    });
+                    loadTestimonials();
+                })
+                .catch(error => {
+                    console.error('Error fetching testimonials:', error);
+                });
+        }
+
+        //LOAD ADMIN VIEW TESTIMONIALS
+        function loadTestimonials() {
+            const testimonialsList = document.getElementById('testimonialsList');
+            testimonialsList.innerHTML = '';
+            testimonials.forEach(function (testimonial, index) {
+                const li = document.createElement('li');
+                li.classList.add('list-group-item');
+                li.innerHTML = `
+                    <div>
+                        <h5>${testimonial.name}</h5>
+                        <p>Destination: ${testimonial.destinationName}</p>
+                        <p>Rating: ${testimonial.rating}</p>
+                        <p>Review: ${testimonial.review}</p>
+                        <button class="btn btn-primary btn-sm" onclick="editTestimonial('${index}')">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteTestimonial(${testimonial.id})">Delete</button>
+                    </div>
+                    `;
+                testimonialsList.appendChild(li);
+            });
+        }
+
+
+        //UPDATE EXISTING TESTIMONIALS
+        function editTestimonial(index) {
+            var testimonial = testimonials[index];
+            document.getElementById('testimonialName').value = testimonial.name;
+            document.getElementById('testimonialDestination').value = testimonial.destinationName;
+            document.getElementById('testimonialRating').value = testimonial.rating;
+            document.getElementById('testimonialReview').value = testimonial.review;
+
+            $('#testimonialModal').modal('show');
+
+            document.getElementById('saveTestimonialBtn').onclick = function () {
+                saveTestimonial(parseInt(testimonial.id));
+            };
+        }
+
+        // SAVE TESTIMONIALS AFTER EDITING
+        function saveTestimonial(Id) {
+            var nameInput = document.getElementById('testimonialName');
+
+            var destinationInput = document.getElementById('testimonialDestination');
+
+            var ratingInput = document.getElementById('testimonialRating');
+
+            var reviewInput = document.getElementById('testimonialReview');
+
+            // Check if any required field is empty
+            if (nameInput.value.trim() === '' || destinationInput.value.trim() === '' || ratingInput.value.trim() === '' || reviewInput.value.trim() === '') {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const testimonialData = {
+                Id: Id,
+                Name: nameInput.value,
+                DestinationName: destinationInput.value,
+                Rating: parseInt(ratingInput.value),
+                Review: reviewInput.value
+            };
+
+
+            fetch(`/testimonials/${Id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(testimonialData)
+            })
+                .then(() => {
+                    UpdateTestimonials();
+                    $('#testimonialModal').modal('hide');
+                })
+                .catch(error => {
+                    console.error('Error updating testimonial:', error);
+                });
+        }
+
+        //ADD NEW TESTIMONIALS
+        function addTestimonial() {
+
+            document.getElementById('testimonialName').value = "";
+            document.getElementById('testimonialDestination').value = "";
+            document.getElementById('testimonialRating').value = "";
+            document.getElementById('testimonialReview').value = "";
+
+            $('#testimonialModal').modal('show');
+
+            document.getElementById('saveTestimonialBtn').onclick = function () {
+                saveAddedTestimonial();
+            };
+        }
+
+        //SAVE NEWLY ADDED TESTIMONIAL
+        function saveAddedTestimonial() {
+            var nameInput = document.getElementById('testimonialName');
+
+            var destinationInput = document.getElementById('testimonialDestination');
+
+            var ratingInput = document.getElementById('testimonialRating');
+
+            var reviewInput = document.getElementById('testimonialReview');
+
+            // Check if any required field is empty
+            if (nameInput.value.trim() === '' || destinationInput.value.trim() === '' || ratingInput.value.trim() === '' || reviewInput.value.trim() === '') {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const testimonialData = {
+                Id: Id,
+                Name: nameInput.value,
+                DestinationName: destinationInput.value,
+                Rating: parseInt(ratingInput.value),
+                Review: reviewInput.value
+            };
+
+            fetch('/testimonials', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(testimonialData)
+            })
+                .then(() => {
+                    UpdateTestimonials();
+                    $('#testimonialModal').modal('hide');
+                })
+                .catch(error => {
+                    console.error('Error saving testimonial:', error);
+                });
+        }
+
+        //DELETE A TESTIMONIAL
+        function deleteTestimonial(id) {
+            if (confirm('Are you sure you want to delete this testimonial?')) {
+                fetch(`/testimonials/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            UpdateTestimonials();
+                        } else {
+                            console.error('Error deleting testimonial:', response.statusText);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting testimonial:', error);
+                    });
+            }
+        }</script>
+</body>
+</html>
