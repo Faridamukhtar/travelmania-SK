@@ -103,7 +103,7 @@ body {
 }
 
 .carousel-card {
-    height: 85%;
+    height: 47vh;
     width: 75%;
     padding: 40px;
     margin: auto;
@@ -170,10 +170,19 @@ button.accept-policy {
 
 @media only screen and (max-width: 900px) {
     .custom-header {
-        height: 80vh;
+        height: 40vh;
     }
 
     .custom-header-overlay {
-        height: 85vh;
+        height: 45vh;
     }
+
+    .carousel-item {
+        height: 45vh;
+    }
+
+    .carousel-card {
+        height: 33vh;
+    }
+
 }

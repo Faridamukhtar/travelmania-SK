@@ -12,13 +12,9 @@
   <ItemGroup>
     <Content Remove="wwwroot\assets\" />
     <Content Remove="wwwroot\js\responsiveNavs.js" />
-    <Content Remove="wwwroot\index.js" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="travelmania.db" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wwwroot\index.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\assets\" />
