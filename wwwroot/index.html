@@ -14,7 +14,7 @@
             <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark bg-dark bg-opacity-50 mb-5 shadow-lg mb-3">
                 <div class="container">
                     <a class="navbar-brand" href="/Index">TM</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -31,6 +31,9 @@
                             </li>
                         </ul>
                     </div>
+                    <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#adminModal">
+                        Admin View
+                    </button>
                 </div>
             </nav>
 
@@ -54,7 +57,7 @@
                 <div class="text-left text-light">
                     <h1 class="display-4 custom-bold-sub">Most Visited</h1>
                 </div>
-                <div class="horizontal-container">
+                <div class="horizontal-container mb-5 pb-5">
                     <div class="img-item">
                         <img src="/assets/dubai.jpg" alt="dubai" class="custom-img">
                         <h4 class="text-light">
@@ -77,10 +80,7 @@
             </section>
 
             <section id="Testimonials">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adminModal">
-                    Open Testimonials Control Panel
-                </button>
-                <div class="text-left text-light">
+                <div class="text-left text-light d-flex justify-content-between mt-5 pt-5">
                     <h1 class="display-4 custom-bold-sub">Testimonials</h1>
                 </div>
                 <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
@@ -108,7 +108,7 @@
     <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content bg-dark text-light">
-                <div class="modal-header" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                <div class="modal-header bg-dark">
                     <h5 class="modal-title" id="adminModalLabel">Admin View - Testimonials</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -118,9 +118,9 @@
                         <!-- Testimonials will be dynamically added here -->
                     </ul>
                 </div>
-                <div class="modal-footer" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                <div class="modal-footer bg-dark">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addTestimonial()">New</button>
+                    <button type="button" class="btn btn-light" onclick="addTestimonial()">New</button>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
     <div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content bg-dark text-light">
-                <div class="modal-header" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                <div class="modal-header bg-dark">
                     <h5 class="modal-title" id="testimonialModalLabel">Edit Testimonial</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -153,7 +153,7 @@
                         <textarea class="form-control" id="testimonialReview" rows="3" required></textarea>
                     </div>
                 </div>
-                <div class="modal-footer" style="background: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%);">
+                <div class="modal-footer bg-dark">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" id="saveTestimonialBtn" class="btn btn-primary">Save</button>
                 </div>
@@ -243,14 +243,15 @@
             testimonials.forEach(function (testimonial, index) {
                 const li = document.createElement('li');
                 li.classList.add('list-group-item');
+                li.classList.add('bg-dark');
                 li.innerHTML = `
-                    <div>
+                    <div class="p-3 mb-2 bg-dark text-light">
                         <h5>${testimonial.name}</h5>
                         <p>Destination: ${testimonial.destinationName}</p>
                         <p>Rating: ${testimonial.rating}</p>
                         <p>Review: ${testimonial.review}</p>
-                        <button class="btn btn-primary btn-sm" onclick="editTestimonial('${index}')">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteTestimonial(${testimonial.id})">Delete</button>
+                        <button class="btn btn-secondary btn-sm" onclick="deleteTestimonial(${testimonial.id})">Delete</button>
+                        <button class="btn btn-light btn-sm" onclick="editTestimonial('${index}')">Edit</button>
                     </div>
                     `;
                 testimonialsList.appendChild(li);
@@ -286,6 +287,9 @@
             // Check if any required field is empty
             if (nameInput.value.trim() === '' || destinationInput.value.trim() === '' || ratingInput.value.trim() === '' || reviewInput.value.trim() === '') {
                 alert('Please fill in all required fields.');
+                return;
+            } else if (ratingInput.value > 5 || ratingInput.value < 1) {
+                alert('Rating should be a number from 1 to 5');
                 return;
             }
 
@@ -344,9 +348,13 @@
                 alert('Please fill in all required fields.');
                 return;
             }
+            else if (ratingInput.value > 5 || ratingInput.value<1) {
+                alert('Rating should be a number from 1 to 5');
+                return;
+            }
+
 
             const testimonialData = {
-                Id: Id,
                 Name: nameInput.value,
                 DestinationName: destinationInput.value,
                 Rating: parseInt(ratingInput.value),
