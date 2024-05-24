@@ -178,11 +178,13 @@ button.accept-policy {
     }
 
     .carousel-item {
-        height: 45vh;
+        height: 30vh;
+        margin-bottom: 8vh;
     }
 
     .carousel-card {
-        height: 33vh;
+        height: 28vh;
+        margin-bottom:5vh;
     }
 
 }
