@@ -7,14 +7,20 @@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/index.css" />
     <script src="https://unpkg.com/htmx.org@1.6.0/dist/htmx.min.js"></script>
+    <style>
+        .modal .bg-dark {
+            background-image: linear-gradient(90deg, rgba(25,25,24,1) 0%, rgba(42,42,42,1) 42%) !important;
+            background-color: black !important;
+        }
+    </style>
 </head>
 <body>
     <header class="custom-header">
         <div class="custom-header-overlay">
-            <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark bg-dark bg-opacity-50 mb-5 shadow-lg mb-3">
+            <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark bg-dark bg-opacity-50 mb-5 shadow-lg">
                 <div class="container">
                     <a class="navbar-brand" href="/Index">TM</a>
-                    <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -31,18 +37,18 @@
                             </li>
                         </ul>
                     </div>
-                    <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#adminModal">
+                    <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#adminModal">
                         Admin View
                     </button>
                 </div>
             </nav>
 
             <section id="Home">
-                <div class="text-center">
-                    <h1 class="display-1 text-light custom-bold-head">TravelMania</h1>
+                <div class="text-center mt-5 pt-5">
+                    <h1 class="display-1 text-light custom-bold-head pt-4 mt-4">TravelMania</h1>
                     <h4 class="display-7 text-light font-weight-bold">Plan. Pack. Proceed.</h4>
                 </div>
-                <div class="d-flex justify-content-center align-items-center p-5 m-3">
+                <div class="d-flex justify-content-center align-items-center p-5 m-5">
                     <form class="col-10 row-md-4 bg-opacity-50">
                         <input class="form-control custom-placeholder custom-input p-3 bg-info bg-opacity-60 rounded-pill" type="search" placeholder="Enter your dream destination..." aria-label="Search">
                     </form>
@@ -51,8 +57,8 @@
         </div>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container pt-5 mt-3">
+        <main role="main">
             <section id="Most-Visited">
                 <div class="text-left text-light">
                     <h1 class="display-4 custom-bold-sub">Most Visited</h1>
@@ -127,7 +133,7 @@
     </div>
 
     <!-- Testimonial Modal -->
-    <div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" aria-hidden="true">
+    <div class="modal rounded fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header bg-dark">
@@ -138,19 +144,19 @@
                     <input type="hidden" id="testimonialId">
                     <div class="mb-3">
                         <label for="testimonialName" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="testimonialName" required>
+                        <input type="text" class="form-control rounded" placeholder="Name..." id="testimonialName" required >
                     </div>
                     <div class="mb-3">
                         <label for="testimonialDestination" class="form-label">Destination:</label>
-                        <input type="text" class="form-control" id="testimonialDestination" required>
+                        <input type="text" class="form-control rounded" placeholder="Destinaion..." id="testimonialDestination" required>
                     </div>
                     <div class="mb-3">
                         <label for="testimonialRating" class="form-label">Rating:</label>
-                        <input type="number" class="form-control" id="testimonialRating" min="1" max="5" required>
+                        <input type="number" class="form-control rounded" placeholder=5 id="testimonialRating" min="1" max="5" required>
                     </div>
                     <div class="mb-3">
                         <label for="testimonialReview" class="form-label">Review:</label>
-                        <textarea class="form-control" id="testimonialReview" rows="3" required></textarea>
+                        <textarea class="form-control rounded" placeholder="Review..." id="testimonialReview" maxlength="100" rows="3" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer bg-dark">
